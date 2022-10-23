@@ -39,14 +39,14 @@ int main() {
             addPoint(point, points);
         }
 
-        ClearBackground(GRAY);
+        ClearBackground(MM_BG);
         BeginDrawing();
 
             for (int i = 0; i <= MAX_POINTS - 1; i++) 
             {
                 Vector2 point = points[i];
-                DrawRectangle(point.x, point.y, 5,5, DARKGRAY);
-                DrawLineStrip(points, MAX_POINTS, BLACK);
+                DrawRectangle(point.x, point.y, 10,10, MM_BROWN);
+                DrawLineStrip(points, MAX_POINTS, MM_BROWN);
             }
 
         EndDrawing();
