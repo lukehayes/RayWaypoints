@@ -6,11 +6,11 @@ BIN       = -o bin/app
 OBJ       = obj
 OBJS       = $(patsubst src/%.c, obj/%.o, $(wildcard src/*.c))
 
-obj/%.o: src/%.cpp
+obj/%.o: src/%.c
 	$(CXX) $(CXXFLAGS) -c $^ -o $@
 
 all: $(OBJS)
-	$(CXX) $(CXXFLAGS) main.c $^ $(BIN) $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) main.c -E $^ $(BIN) $(LDFLAGS)
 
 preprocessor: $(OBJS)
 	$(CXX) $(CXXFLAGS) -E main.c $^ $(BIN) $(LDFLAGS)
