@@ -42,11 +42,12 @@ int main() {
         ClearBackground(MM_BG);
         BeginDrawing();
 
-            for (int i = 0; i <= MAX_POINTS - 1; i++) 
+            for (int i = 0; i <= MAX_POINTS - 1; ++i) 
             {
-                Vector2 point = points[i];
-                DrawRectangle(point.x, point.y, 10,10, MM_BROWN);
-                DrawLineStrip(points, MAX_POINTS, MM_BROWN);
+                Vector2 a = points[i];
+                Vector2 b = points[i + 1];
+                DrawCircle(a.x,a.y, 9, MM_BLUE);
+                DrawLineEx(a,b,5, MM_BLUE);
             }
 
         EndDrawing();
