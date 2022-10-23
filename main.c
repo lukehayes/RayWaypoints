@@ -3,6 +3,16 @@
 
 #define MAX_POINTS 10
 
+/* == Mini Metro Style Colors ======================================== */
+#define MM_BG           CLITERAL(Color){ 243, 241, 237, 255 }
+#define MM_YELLOW       CLITERAL(Color){ 250, 211, 1,   255 }
+#define MM_RED          CLITERAL(Color){ 237, 45,  25,  255 }
+#define MM_BLUE         CLITERAL(Color){ 35,  65,  147, 255 }
+#define MM_BROWN        CLITERAL(Color){ 62,  49,  46,  255 }
+#define MM_WATER_LIGHT  CLITERAL(Color){ 199, 234, 243, 255 }
+#define MM_WATER_DARK   CLITERAL(Color){ 105, 203, 243, 255 }
+/* ================================================================== */
+
 void addPoint(Vector2 newPoint, Vector2* points) 
 {
     static int POINTS_COUNT = 0;
