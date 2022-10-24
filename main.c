@@ -2,6 +2,7 @@
 #include "raylib.h"
 
 #define MAX_POINTS 10
+static int POINTS_COUNT = 1;
 
 /* == Mini Metro Style Colors ======================================== */
 #define MM_BG           CLITERAL(Color){ 243, 241, 237, 255 }
@@ -15,10 +16,19 @@
 
 void addPoint(Vector2 newPoint, Vector2* points) 
 {
-    static int POINTS_COUNT = 0;
     points[POINTS_COUNT] = newPoint;
     POINTS_COUNT++;
     printf("Added New Point: (%f,%f). Point Count: %i\n", newPoint.x, newPoint.y, POINTS_COUNT);
+}
+
+void clearPoints(Vector2* points, size_t size)
+{
+    for(int i = 0; i<= size; i++)
+    {
+        points[i] = (Vector2){0,0};
+    }
+
+    POINTS_COUNT = 0;
 }
 
 void printVec2(Vector2 v)
@@ -54,6 +64,10 @@ int main() {
             addPoint(point, points);
         }
 
+        if(IsMouseButtonPressed(1))
+        {
+            clearPoints(points, MAX_POINTS);
+        }
         ClearBackground(MM_BG);
         BeginDrawing();
 
