@@ -26,6 +26,16 @@ void printVec2(Vector2 v)
     printf("x= %f, y= %f\n", v.x, v.y);
 }
 
+bool isZeroVector(Vector2 v)
+{
+    bool isEmpty = false;
+    if(v.x == 0 && v.y == 0)
+    {
+        isEmpty = true;
+    }
+    return isEmpty;
+}
+
 int main() {
 
     InitWindow(800,600, "Game");
