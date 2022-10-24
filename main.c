@@ -1,5 +1,6 @@
 #include "common/types.h"
 #include "raylib.h"
+#include <stdio.h>
 
 #define MAX_POINTS 10
 static int POINTS_COUNT = 1;
@@ -31,6 +32,7 @@ void clearPoints(Vector2* points, size_t size)
     POINTS_COUNT = 0;
 }
 
+
 void printVec2(Vector2 v)
 {
     printf("x= %f, y= %f\n", v.x, v.y);
@@ -51,6 +53,7 @@ int main() {
     InitWindow(800,600, "Game");
 
     Vector2 points[MAX_POINTS];
+    points[0] = (Vector2){400,300};
 
     float delta = 0.0;
 
@@ -68,16 +71,32 @@ int main() {
         {
             clearPoints(points, MAX_POINTS);
         }
+
         ClearBackground(MM_BG);
         BeginDrawing();
 
-            for (int i = 0; i <= MAX_POINTS - 1; ++i) 
+        for (int i = 0; i <= MAX_POINTS - 1; ++i) 
+        {
+            Vector2 a = points[i];
+            Vector2 b = points[i + 1];
+
+            // FIXME Temporary solution to get rid of the first vector
+            // point even though it there isn't one initially.
+            if(isZeroVector(a) && isZeroVector(b))
             {
-                Vector2 a = points[i];
-                Vector2 b = points[i + 1];
-                DrawCircle(a.x,a.y, 9, MM_BLUE);
+                DrawCircle(a.x,a.y, 8, MM_BLUE);
+            }else
+            {
+                DrawCircle(a.x,a.y, 8, MM_BLUE);
                 DrawLineEx(a,b,5, MM_BLUE);
             }
+
+            // Draw circle at end of path
+            if(i == MAX_POINTS - 1)
+            {
+                DrawCircle(b.x,b.y, 9, MM_YELLOW);
+            }
+        }
 
         EndDrawing();
     }
