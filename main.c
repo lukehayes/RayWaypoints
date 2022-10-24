@@ -21,6 +21,11 @@ void addPoint(Vector2 newPoint, Vector2* points)
     printf("Added New Point: (%f,%f). Point Count: %i\n", newPoint.x, newPoint.y, POINTS_COUNT);
 }
 
+void printVec2(Vector2 v)
+{
+    printf("x= %f, y= %f\n", v.x, v.y);
+}
+
 int main() {
 
     InitWindow(800,600, "Game");
